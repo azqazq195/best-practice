@@ -1,0 +1,13 @@
+services:
+  database:
+    container_name: unio-database
+    image: postgres:17-alpine
+    restart: no
+    volumes:
+      - ./volumes/pg_data:/var/lib/postgresql/data
+    ports:
+      - "${DATABASE_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
